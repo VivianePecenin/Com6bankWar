@@ -23,4 +23,4 @@ jobs:
         run: docker build -t vivianepecenin/com6bankwar .
 
       - name: Push Imagem Docker
-        run: docker push com6bankwar
+        run: docker push vivianepecenin/com6bankwar
