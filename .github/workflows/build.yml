@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Imagem Docker
-        run: docker build -t com6bankwar .
+        run: docker build -t vivianepecenin/com6bankwar .
 
       - name: Push Imagem Docker
         run: docker push com6bankwar
