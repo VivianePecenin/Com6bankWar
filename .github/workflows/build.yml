@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SPRING.DATASOURCE.URL: ${{ secrets.DB_URL }}
-      SPRING.DATASOURCE.USERNAME: ${{ secrets.DB_USERNAME }}
-      SPRING.DATASOUCE.PASSWORD: ${{ secrets.DB_PASSWORD }}
-      SPRING.JPA.SHOW-SQL: true
-      SPRING.JPA.PROPERTIES.HIBERNATE.DIALECT: org.hibernate.dialect.MySQL57Dialect
-      SPRING.JPA.HIBERNATE.DDL-AUTO: update
+      SPRING_DATASOURCE_URL: ${{ secrets.DB_URL }}
+      SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+      SPRING_DATASOUCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      SPRING_JPA_SHOW-SQL: true
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL57Dialect
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
       JWT_SECRET: secret
 
     steps:
