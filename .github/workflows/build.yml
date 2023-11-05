@@ -39,6 +39,8 @@ jobs:
 
       - name: Build Imagem Docker
         run: docker build -t vivianepecenin/com6bankwar .
+        env:
+          MYSQL_HOST: mysql
 
       - name: Push Imagem Docker
         run: docker push vivianepecenin/com6bankwar
