@@ -34,9 +34,6 @@ jobs:
         with:
           java-version: "17"
 
-      - name: install mysql
-        run: sudo apt-get install & sudo apt-get install -y mysql-client
-
       - name: Build do projeto
         run: mvn clean package
 
