@@ -35,7 +35,7 @@ jobs:
           java-version: "17"
 
       - name: install mysql
-        run: docker pull mysql
+        run: docker pull mysql:5.7
 
       - name: Build do projeto
         run: mvn clean package
