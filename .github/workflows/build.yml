@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DB_URL: ${{ secrets.DB_URL }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      SPRING_JPA_SHOW_SQL: true
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL57Dialect
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      SPRING.DATASOURCE.URL: ${{ secrets.DB_URL }}
+      SPRING.DATASOURCE.USERNAME: ${{ secrets.DB_USERNAME }}
+      SPRING.DATASOUCE.PASSWORD: ${{ secrets.DB_PASSWORD }}
+      SPRING.JPA.SHOW-SQL: true
+      SPRING.JPA.PROPERTIES.HIBERNATE.DIALECT: org.hibernate.dialect.MySQL57Dialect
+      SPRING.JPA.HIBERNATE.DDL-AUTO: update
+      JWT_SECRET: secret
 
     steps:
       - name: Checkout
