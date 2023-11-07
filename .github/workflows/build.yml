@@ -9,7 +9,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: com6bank
+    
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: ${{ secrets.DB_USERNAME}}
+          MYSQL_PASSWORD: ${{secrets.DB_PASSWORD}}
+          MYSQL_DATABASE: carteiradigital
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD}}
+        ports:
+          - 3306:3306
     env:
       SPRING_DATASOURCE_URL: ${{ secrets.DB_URL }}
       SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
