@@ -10,26 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: com6bank
-    
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_USER: ${{ secrets.DB_USERNAME}}
-          MYSQL_PASSWORD: ${{secrets.DB_PASSWORD}}
-          MYSQL_DATABASE: carteiradigital
-          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD}}
-        ports:
-          - 3306:3306
-    env:
-      SPRING_DATASOURCE_URL: ${{ secrets.DB_URL }}
-      SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
-      SPRING_DATASOUCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      SPRING_JPA_SHOW-SQL: true
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL57Dialect
-      SPRING_JPA_HIBERNATE_DDL-AUTO: update
-      JWT_SECRET: secret
-
+  
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -49,9 +30,12 @@ jobs:
         run: mvn clean package
 
       - name: Build Imagem Docker
-        run: docker build -t vivianepecenin/com6bankwar .
-        env:
-          MYSQL_HOST: mysql
-
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          context: /home/runner/work/Com6bankWar
+          file: Dockerfile
+          tags: vivianepecenin/com6bank:latest
+        
       - name: Push Imagem Docker
         run: docker push vivianepecenin/com6bankwar
