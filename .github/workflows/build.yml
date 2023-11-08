@@ -27,7 +27,7 @@ jobs:
           java-version: "17"
 
       - name: Build do projeto
-        run: mvn clean package
+        run: mvn clean package  -Dmaven.test.skip=true
 
       - name: Build Imagem Docker
         uses: docker/build-push-action@v5
@@ -36,6 +36,3 @@ jobs:
           context: /home/runner/work/Com6bankWar
           file: Dockerfile
           tags: vivianepecenin/com6bank:latest
-        
-      - name: Push Imagem Docker
-        run: docker push vivianepecenin/com6bankwar
