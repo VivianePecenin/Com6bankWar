@@ -25,6 +25,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "17"
+          distribution: "adopt"
 
       - name: Build do projeto
         run: mvn clean package  -Dmaven.test.skip=true
