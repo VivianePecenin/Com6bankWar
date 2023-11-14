@@ -20,11 +20,8 @@ jobs:
           java-version: "17"
           distribution: "adopt"
 
-      - name: Copiar web.xml para o contexto do Docker
-        run: cp web.xml $GITHUB_WORKSPACE
-
       - name: Build do projeto
-        run: mvn clean package -Dmaven.test.skip=true
+        run: mvn clean package
 
       - name: Login
         uses: docker/login-action@v1
@@ -36,8 +33,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          context: /home/runner/work/Com6bankWar
-          file: Dockerfile
+          context: .
+          file: ./Dockerfile
           tags: vivianepecenin/com6bank:latest
 
 
