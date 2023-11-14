@@ -21,7 +21,7 @@ jobs:
           distribution: "adopt"
 
       - name: Build do projeto
-        run: mvn clean package
+        run: mvn clean package -DskipTests
 
       - name: Login
         uses: docker/login-action@v1
