@@ -5,42 +5,43 @@ on:
     branches:
       - master
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      environment: com6bank
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: com6bank
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-        - name: Versao java
-          uses: actions/setup-java@v1
-          with:
-            java-version: "17"
-            distribution: "adopt"
+      - name: Versao java
+        uses: actions/setup-java@v1
+        with:
+          java-version: "17"
+          distribution: "adopt"
 
-        - name: Build do projeto
-          run: mvn clean package -Dmaven.test.skip=true
+      - name: Build do projeto
+        run: mvn clean package -Dmaven.test.skip=true
 
-        - name: Login
-          uses: docker/login-action@v1
-          with:
-            username: ${{ secrets.DOCKER_USERNAME }}
-            password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-        - name: Build Imagem Docker
-          uses: docker/build-push-action@v5
-          with:
-            push: true
-            context: /home/runner/work/Com6bankWar
-            file: Dockerfile
-            tags: vivianepecenin/com6bank:latest
+      - name: Build Imagem Docker
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          context: /home/runner/work/Com6bankWar
+          file: Dockerfile
+          tags: vivianepecenin/com6bank:latest
 
-        - name: SSH key ec2
-          run: |
-              mkdir -p ~/.ssh/
-              touch ~/.ssh/authorized_keys
-              echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/authorized_keys
-              chmod 0600 ~/.ssh/authorized_keys
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: SSH key ec2
+        run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/authorized_keys
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/authorized_keys
+          chmod 0600 ~/.ssh/authorized_keys
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
