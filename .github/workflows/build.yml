@@ -20,6 +20,9 @@ jobs:
           java-version: "17"
           distribution: "adopt"
 
+      - name: Copiar web.xml para o contexto do Docker
+        run: cp web.xml $GITHUB_WORKSPACE
+
       - name: Build do projeto
         run: mvn clean package -Dmaven.test.skip=true
 
