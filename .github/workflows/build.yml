@@ -46,5 +46,5 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           source: "docker-compose.yaml"
-          target: /home/vivianepecenin
+          target: "*.war"
 
