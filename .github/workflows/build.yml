@@ -39,9 +39,12 @@ jobs:
 
 
       - name: SSH key ec2
-        run: |
-          mkdir -p ~/.ssh/
-          touch ~/.ssh/authorized_keys
-          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/authorized_keys
-          chmod 0600 ~/.ssh/authorized_keys
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME_EC2 }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY_PRIVATE }}
+          source: "docker-compose.yaml"
+          target: /home/vivianepecenin
+
