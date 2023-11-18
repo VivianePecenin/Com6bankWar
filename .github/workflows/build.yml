@@ -47,4 +47,5 @@ jobs:
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           source: "/docker-compose.yaml"
           target: "/home/app/"
+          debug: true
 
