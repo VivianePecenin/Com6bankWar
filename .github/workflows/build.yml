@@ -45,8 +45,8 @@ jobs:
           username: ${{ secrets.USERNAME_EC2 }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
-          source: "./docker-compose.yaml"
-          target: "/home/app/"
+          source: ".,!/docker-compose.yaml"
+          target: "-/home/app/"
 
       - name: Update Api
         uses: appleboy/ssh-action@master
@@ -56,6 +56,6 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           script: |
-            cd /home/app/docker-compose.yaml
+            cd -/home/app/
             docker-compose pull
             docker-compose up -d
