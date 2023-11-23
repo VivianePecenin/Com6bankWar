@@ -47,15 +47,4 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           source: "."
-          target: "./com6bank"
-
-      - name: Update Api
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME_EC2 }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSH_KEY_PRIVATE }}
-          script: |
-            cd /home/app/com6bank
-            docker-compose up -d
+          target: "./Com6bank"
