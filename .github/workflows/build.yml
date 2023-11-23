@@ -41,6 +41,7 @@ jobs:
       - name: SSH key ec2
         uses: appleboy/ssh-action@master
         with:
+          debug: true
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME_EC2 }}
           port: ${{ secrets.PORT }}
