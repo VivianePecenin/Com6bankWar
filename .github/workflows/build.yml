@@ -57,4 +57,4 @@ jobs:
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           script: |
             cd /home/app
-            docker-compose up -d
+            docker-compose.yaml up -d
