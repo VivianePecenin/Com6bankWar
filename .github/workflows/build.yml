@@ -46,7 +46,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           source: "."
-          target: "./home/app"
+          target: "./app"
 
       - name: Update Api
         uses: appleboy/ssh-action@master
