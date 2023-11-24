@@ -37,14 +37,6 @@ jobs:
           file: ./Dockerfile
           tags: vivianepecenin/com6bank:latest
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_KEY_PRIVATE }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-
       - name: SSH key ec2
         uses: appleboy/ssh-action@master
         with:
@@ -54,4 +46,4 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
           source: "."
-          target: "./Com6bank"
+          target : "./Com6bank"
