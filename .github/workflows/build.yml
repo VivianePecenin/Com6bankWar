@@ -38,7 +38,7 @@ jobs:
           tags: vivianepecenin/com6bank:latest
 
       - name: SSH key ec2
-        uses: appleboy/ssh-action@master
+        uses: appleboy/scp-action@master
         with:
           debug: true
           host: ${{ secrets.HOST }}
